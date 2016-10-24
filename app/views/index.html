@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Chat com WebSocket + NodeJS</title>  
+
+    <!-- BOOTSTRAP -->
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">  
+
+  </head>
+  <body>
+    
+    <form>
+       
+    
+      <input id="inputMensagem" autocomplete="false" />
+
+      <a class="btn btn-primary" href="javascript: enviarMensagem();" role="button">Enviar</a> 
+
+      <ul id="listaMensagens"></ul>       
+    
+    </form>
+      
+    
+      <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+
+      <script>
+        var socket = io();
+
+        function enviarMensagem(){
+
+          var campoMensagem = document.getElementById('inputMensagem');
+
+          socket.emit('nosso chat websocket', campoMensagem.value);
+
+          campoMensagem.value = '';
+
+          return false;
+        }      
+
+        socket.on('nosso chat websocket', function(msg){
+
+          document.getElementById('listaMensagens').innerHTML += '<li>'+msg+'</li>';
+        });
+
+       socket.on('disconnect', function(){
+
+          alert('Você se desconectou!!!');
+        });
+      </script>
+
+  </body>
+</html>

@@ -37,7 +37,7 @@ No diretório do projeto, que contém o arquivo package.json execute o seguinte 
 ```sh
 npm start
 ```
-Caso esteja em ambiente de desenvolvimento, use o nodemon que foi instalado em passo anterior para que o hotdeploy do projeto seja feito automáticamente
+Caso esteja em ambiente de desenvolvimento, use o nodemon que foi instalado em passo anterior para que o hotdeploy do projeto seja feito automaticamente
 ```sh
 nodemon app.js
 ```
